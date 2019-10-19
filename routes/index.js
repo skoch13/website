@@ -10,13 +10,16 @@ router.get('/playlists', (req,res) => {
 });
 
 router.get('/socks', (req,res) => {
-    res.render('socks', {
-        page: 'socks'
-    });
+    res.render('socks');
 });
 
 router.post('/socks', (req,res) => {
     res.send(req.body.name)
-})
+});
+
+router.get('*', (req,res) => {
+    res.status(404);
+    res.render('404');
+});
 
 module.exports = router;
