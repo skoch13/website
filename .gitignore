@@ -1,3 +1,4 @@
-img/
-.DS_Store/
-node-modules/
+img
+.DS_Store
+node_modules
+.env
