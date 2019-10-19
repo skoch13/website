@@ -1,11 +1,17 @@
-// nav styling depending on the current page
+//nav styling depending on the current page
 
-let currentOwner = document.querySelector('.current-page');
-let currentOwnerLocation = currentOwner.attributes.href.value;
-let currentPage = window.location.pathname;
+const currentOwner = document.querySelector('.current-page');
+const currentPage = window.location.pathname;
 
-if (currentOwner !== currentPage) {
-    currentOwner.classList.remove('current-page');
-   document.getElementById(currentPage).classList.add('current-page');
+if (currentOwner) {
+    let currentOwnerLocation = currentOwner.attributes.href.value;
+
+    if (currentOwner !== currentOwnerLocation) {
+        currentOwner.classList.remove('current-page');
+        document.getElementById(currentPage).firstChild.classList.add('current-page');
+    }
 }
 
+// if none of the links has the class - add it and remove href
+document.getElementById(currentPage).firstChild.classList.add('current-page');
+document.getElementById(currentPage).firstChild.href = '#';
