@@ -1,0 +1,31 @@
+{
+  "name": "skoch13.cloud",
+  "version": "1.0.0",
+  "description": "This is a repo for my personal website, which represents my sense of humor and could be handy with generating SOCKS5 proxy credentials.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skoch13/website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skoch13/website/issues"
+  },
+  "homepage": "https://github.com/skoch13/website#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.1.0",
+    "nodemon": "^1.19.3"
+  }
+}
