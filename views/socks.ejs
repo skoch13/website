@@ -12,11 +12,12 @@
             <fieldset class="fld-form">
                 <legend>Login Details</legend>
                 <label for="login">Login:</label><input name="name" type="text" value="" id="login" class="submit-input"
-                    size="25" maxlength="25" placeholder="John Doe" required><br /><label
+                    size="25" maxlength="25" placeholder="John Doe" required> <span class="submit-check"></span><br /><label
                     for="email">Email:</label><input name="email" type="email" placeholder="example@website.com"
                     id="email" class="submit-input" size="25" maxlength="25"> <br /> <button type="submit"
-                    value="Submit" class="btn-submit">Отправить</button>
+                    value="Submit" class="btn-submit" disabled>Отправить</button>
             </fieldset>
         </form>
     </div>
 </section>
+<script src="scripts/checker.js"></script>

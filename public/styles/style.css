@@ -225,3 +225,19 @@ legend {
 .h1nf {
 	margin-bottom: 1em;
 }
+
+.submit-check-red {
+	color: white;
+	font-size: 1em;
+	font-weight: bold;
+	background-color: red;
+	margin-left: 1em;
+}
+
+.submit-check-green {
+	color: white;
+	font-size: 1em;
+	font-weight: bold;
+	background-color: green;
+	margin-left: 1em;
+}

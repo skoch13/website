@@ -1,6 +1,9 @@
 # skoch13.cloud
 This is a repo for my personal website, which represents my sense of humor and could be handy with generating SOCKS5 proxy credentials.
 
+## 10/20/2019
+Now form checks if the user exists, Getting users from OS, saving it to file and fetching by the webpage. `Success` page added
+
 ## 10/19/2019
 Moved to EJS, made basic routing. added `404` page
 
