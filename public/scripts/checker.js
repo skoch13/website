@@ -4,10 +4,9 @@
     let sumbitButton = document.querySelector('.btn-submit');
     let typingTimer;
 
-    let result;
-
     userField.addEventListener('keyup', () => {
         clearTimeout(typingTimer);
+
         //emptying span
         textSpan.classList.remove('submit-check-red');
         textSpan.classList.remove('submit-check-green');
@@ -20,7 +19,6 @@
     });
 
     const doneTyping = () => {
-    result = undefined;
         // checking existing users
         fetch(
             '/checkUsers', {
@@ -34,17 +32,16 @@
         ).then(responce => {
             return responce.text();
         }).then(resp => {
-            result = resp;
-        if (result === 'true') {
-            textSpan.classList.add('submit-check-green');
-            textSpan.textContent = 'Username is free'
-            sumbitButton.disabled = false;
-        } else {
-            textSpan.classList.add('submit-check-red');
-            textSpan.classList.remove('submit-check-green');
-            textSpan.textContent = 'User exists';
-            sumbitButton.disabled = true;
-        }
+            if (resp === 'true') {
+                textSpan.classList.add('submit-check-green');
+                textSpan.textContent = 'Username is free'
+                sumbitButton.disabled = false;
+            } else {
+                textSpan.classList.add('submit-check-red');
+                textSpan.classList.remove('submit-check-green');
+                textSpan.textContent = 'User exists';
+                sumbitButton.disabled = true;
+            }
         }).catch(e => {
             console.log(e);
         });

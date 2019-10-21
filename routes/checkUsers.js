@@ -5,13 +5,12 @@ const checkUsers = function (requestedUser) {
     for (usr in existingUsers) {
         if (existingUsers[usr].toLowerCase() !== requestedUser.toLowerCase()) {
             result = true;
-        }
-        else {
-             result = false;
+        } else {
+            result = false;
+            break;
         }
     }
     return result;
 };
 
 module.exports = checkUsers;
-
