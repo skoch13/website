@@ -1,29 +1,13 @@
     let userField = document.querySelector('#login');
     let textSpan = document.querySelector('.submit-check');
-    let doneTypingInterval = 200;
+    let doneTypingInterval = 500;
     let sumbitButton = document.querySelector('.btn-submit');
-    var typingTimer;
+    let typingTimer;
 
-    fetch(
-        'users.json', {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }
-    ).then(responce => {
-        return responce.json();
-    }).then(resp => {
-        localStorage.setItem('users', JSON.stringify(resp));
-    });
-
-    let usersJson = JSON.parse(localStorage.users);
-
-    //checking if a user exists on keyup
+    let result;
 
     userField.addEventListener('keyup', () => {
         clearTimeout(typingTimer);
-
         //emptying span
         textSpan.classList.remove('submit-check-red');
         textSpan.classList.remove('submit-check-green');
@@ -36,19 +20,32 @@
     });
 
     const doneTyping = () => {
-
-        for (user in usersJson) {
-            if (usersJson[user].toLowerCase() !== userField.value.toLowerCase()) {
-                textSpan.classList.add('submit-check-green');
-                textSpan.textContent = 'Username is free'
-                sumbitButton.disabled = false;
+    result = undefined;
+        // checking existing users
+        fetch(
+            '/checkUsers', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'text/plain',
+                    'Content-Type': 'text/plain'
+                },
+                body: userField.value,
+            }
+        ).then(responce => {
+            return responce.text();
+        }).then(resp => {
+            result = resp;
+        if (result === 'true') {
+            textSpan.classList.add('submit-check-green');
+            textSpan.textContent = 'Username is free'
+            sumbitButton.disabled = false;
         } else {
             textSpan.classList.add('submit-check-red');
             textSpan.classList.remove('submit-check-green');
             textSpan.textContent = 'User exists';
             sumbitButton.disabled = true;
-            break;
         }
-        
-    }
+        }).catch(e => {
+            console.log(e);
+        });
     }
