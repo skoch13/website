@@ -25,14 +25,13 @@ const getUsers = function () {
         usersToJson = JSON.stringify(usersToJson,null,2);
 
         //saving existing users to a text file
-        fs.writeFile('./public/users.json', usersToJson, (err) => {
+        fs.writeFile('./data/users.json', usersToJson, (err) => {
             if (err) {
                 return console.log(err);
 
             }
         })
     });
-
 }
 
 module.exports = getUsers;
