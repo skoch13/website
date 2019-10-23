@@ -18,9 +18,9 @@
         }
     });
 
-    const doneTyping = () => {
+    const doneTyping = async () => {
         // checking existing users
-        fetch(
+        const exists = await fetch(
             '/checkUsers', {
                 method: 'POST',
                 headers: {
@@ -29,20 +29,21 @@
                 },
                 body: userField.value,
             }
-        ).then(responce => {
-            return responce.text();
-        }).then(resp => {
-            if (resp === 'true') {
-                textSpan.classList.add('submit-check-green');
-                textSpan.textContent = 'Username is free'
-                sumbitButton.disabled = false;
-            } else {
-                textSpan.classList.add('submit-check-red');
-                textSpan.classList.remove('submit-check-green');
-                textSpan.textContent = 'User exists';
-                sumbitButton.disabled = true;
-            }
-        }).catch(e => {
-            console.log(e);
+        )
+        .then(responce => responce.json())
+        .catch(e => {
+            console.error(e);
         });
+
+        if (exists) {
+            textSpan.classList.add('submit-check-green');
+            textSpan.textContent = 'Username is free'
+            sumbitButton.disabled = false;
+        } else {
+            textSpan.classList.add('submit-check-red');
+            textSpan.classList.remove('submit-check-green');
+            textSpan.textContent = 'User exists';
+            sumbitButton.disabled = true;
+        }
+
     }

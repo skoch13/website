@@ -3,6 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const getUsers = require('./getUsers');
 const checkUsers = require('./checkUsers');
+const userCreator = require('./userCreator');
 
 const urlencodedParser = bodyParser.urlencoded({
     extended: false
@@ -22,15 +23,19 @@ router.get('/socks', (req, res) => {
     res.render('socks');
 });
 
-router.post('/checkUsers', textParser, async (req, res) => {
-    let result = await checkUsers(req.body);
-    await res.send(result);
+router.post('/checkUsers', textParser, (req, res) => {
+    let result = checkUsers(req.body);
+    res.send(result);
 })
 
 router.post('/socks', urlencodedParser, (req, res) => {
-    res.render('success', {
-        data: req.body.name
-    });
+        let socks5string =  userCreator(req.body.name);
+        res.render('success', {
+            data: {
+                name: req.body.name,
+                socks5: socks5string
+            },
+        });
 });
 
 router.get('*', (req, res) => {
