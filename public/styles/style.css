@@ -108,8 +108,14 @@ a:focus {
 	
 }
 
+.regName {
+	text-decoration: underline dotted #707070;
+	color:  #171717;
+}
 
-
+.article-image-succ {
+	margin-top:1em;
+}
 
 nav ul {
 	list-style: none;
