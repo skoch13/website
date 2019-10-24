@@ -115,6 +115,9 @@ a:focus {
 
 .article-image-succ {
 	margin-top:1em;
+	max-width: 600px;
+	max-height: 800px;
+	padding-left: 5em;
 }
 
 nav ul {
