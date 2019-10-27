@@ -1,8 +1,17 @@
 const exec = require('child_process').exec;
 const fs = require('fs');
 
+/* testing on linux
+ cut -d: -f1 /etc/passwd
+
+mac command for the reference:
+dscl . list /Users | grep -v '_'
+
+
+*/
+
 const getUsers = function () {
-    exec("dscl . list /Users | grep -v '_'", (error, stdout, stderr) => {
+    exec("cut -d: -f1 /etc/passwd", (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return;
