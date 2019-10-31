@@ -14,6 +14,12 @@
         sumbitButton.disabled = true;
 
         if (userField.value) {
+            if (!userField.checkValidity()) {
+            textSpan.classList.add('submit-check-orange');
+            textSpan.textContent = 'Латиница, от 3 до 25 символов';
+            return;
+            }
+            textSpan.classList.remove('submit-check-orange');
             typingTimer = setTimeout(doneTyping, doneTypingInterval);
         }
     });
@@ -37,12 +43,12 @@
 
         if (exists) {
             textSpan.classList.add('submit-check-green');
-            textSpan.textContent = 'Username is free'
+            textSpan.textContent = 'Имя свободно'
             sumbitButton.disabled = false;
         } else {
             textSpan.classList.add('submit-check-red');
             textSpan.classList.remove('submit-check-green');
-            textSpan.textContent = 'User exists';
+            textSpan.textContent = 'Занято';
             sumbitButton.disabled = true;
         }
 
