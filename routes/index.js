@@ -30,6 +30,13 @@ router.post('/checkUsers', textParser, (req, res) => {
 
 router.post('/socks', urlencodedParser, (req, res) => {
         let socks5string =  userCreator(req.body.name);
+
+        //error checker
+        if (socks5string.includes('exec')) {
+            res.status(404);
+            res.render('404');
+        }
+
         res.render('success', {
             data: {
                 name: req.body.name,
@@ -38,7 +45,7 @@ router.post('/socks', urlencodedParser, (req, res) => {
         });
 });
 
-router.get('*', (req, res) => {
+router.all('*', (req, res) => {
     res.status(404);
     res.render('404');
 });

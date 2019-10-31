@@ -16,7 +16,7 @@
         if (userField.value) {
             if (!userField.checkValidity()) {
             textSpan.classList.add('submit-check-orange');
-            textSpan.textContent = 'Латиница, от 3 до 25 символов';
+            textSpan.textContent = 'Латиницей, от 3 до 25 символов';
             return;
             }
             textSpan.classList.remove('submit-check-orange');
