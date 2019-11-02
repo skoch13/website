@@ -1,6 +1,9 @@
 # skoch13.cloud
 This is a repo for my personal website, which represents my sense of humor and could be handy with generating SOCKS5 proxy credentials.
 
+## 10/31/2019
+added frontend form validator
+
 ## 10/22/2019
 Moved form checker to server. Woof woof bark bark
 
