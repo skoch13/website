@@ -1,38 +1,35 @@
-document.getElementById('submitForm').addEventListener('submit', runVerify);
-
-function runVerify(e) {
-    e.preventDefault();
-    runCaptca();
-}
-
-function runCaptca() {
-
+const captchaResult = () => {
     grecaptcha.execute('6Lc2nsAUAAAAAN1avEKzMfaZERaZp45NxSQieTUQ', {
         action: 'homepage'
-    }).then(function (token) {
+    }).then((token) => {
         const login = document.querySelector('#login').value;
         const email = document.querySelector('#email').value;
         const captcha = token;
-
         sendData(login, email, captcha);
     });
 }
-function sendData(login, email, captcha) {
+const sendData = (login, email, captcha) => {
+
     const info = JSON.stringify({
         login: login,
         email: email,
         captcha: captcha,
     });
-console.log(info);
-    fetch('/socks', {
-        method:'POST',
+    fetch('/captcha', {
+        method: 'POST',
         headers: {
-            'Accept':'application/json, text/plain, */*',
-            'Content-type': 'applicaiton/json'
-
+            'Accept': 'application/json, text/plain, */*',
+            'Content-type': 'application/json'
         },
         body: info
     }).then((res) => res.json()).then((data) => {
-        alert('msg: '+ data.msg + ' score: ' + data.score)
+
+        if (!data.success) {
+            alert('Вы - грязный робот');
+            console.log(data.score);
+        }
+        result = data.success;
+        console.log(`OK ${data.score}`);
     }).catch((e) => console.log(e));
+    return result;
 }
