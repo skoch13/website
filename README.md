@@ -1,6 +1,9 @@
 # skoch13.cloud
 This is a repo for my personal website, which represents my sense of humor and could be handy with generating SOCKS5 proxy credentials.
 
+## 11/02/2019
+added reCaptcha v3, varios fixes and refactorings, ready to deploy
+
 ## 10/31/2019
 added frontend form validator
 
