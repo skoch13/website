@@ -5,6 +5,10 @@ const getUsers = require('./getUsers');
 const checkUsers = require('./checkUsers');
 const userCreator = require('./userCreator');
 const captchaChecker = require('./captchaChecker');
+const {
+    check,
+    validationResult
+} = require('express-validator');
 
 const textParser = bodyParser.text();
 const jsonParser = bodyParser.json();
@@ -23,32 +27,47 @@ router.get('/socks', (req, res) => {
 });
 
 
-router.post('/checkUsers', textParser, (req, res) => {
+router.post('/checkUsers',[check('name').trim().not().isEmpty().isString().isAlpha().isLength({
+    min: 3
+})], textParser, (req, res) => {
     let result = checkUsers(req.body);
     res.send(result);
 });
 
 router.post('/captcha', jsonParser, (req, res) => {
-    captchaChecker(req,res);
+    captchaChecker(req, res);
 });
 
-router.post('/socks', (req,res) =>{
+router.post('/socks', [check('name').trim().not().isEmpty().isString().isAlpha().isLength({
+    min: 3
+})], (req, res) => {
 
-    let socks5string = userCreator(req.body.name);
+    getUsers();
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            errors: errors.array()
+        });
+    }
+    let result = checkUsers(req.body.name);
 
-    //error checker
-    if (socks5string.includes('exec')) {
-        res.status(404);
-        res.render('404');
+    if (!result) {
+        
+        res.status(409);
+    } else {
+        let socks5string = userCreator(req.body.name);
+
+        res.render('success', {
+            data: {
+                name: req.body.name,
+                socks5: socks5string
+            },
+        });
+        res.status(200);
     }
 
-    res.render('success', {
-        data: {
-            name: req.body.name,
-            socks5: socks5string
-        },
-    });
-})
+
+});
 
 
 router.all('*', (req, res) => {
