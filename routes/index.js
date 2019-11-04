@@ -10,6 +10,8 @@ const {
     validationResult
 } = require('express-validator');
 
+let usersInJSON = getUsers();
+
 const textParser = bodyParser.text();
 const jsonParser = bodyParser.json();
 
@@ -22,15 +24,15 @@ router.get('/playlists', (req, res) => {
 });
 
 router.get('/socks', (req, res) => {
-    getUsers();
     res.render('socks');
 });
 
 
-router.post('/checkUsers',[check('name').trim().not().isEmpty().isString().isAlpha().isLength({
-    min: 3
+router.post('/checkUsers', [check('name').trim().not().isEmpty().isString().isAlpha().isLength({
+    min: 3,
+    max: 25
 })], textParser, (req, res) => {
-    let result = checkUsers(req.body);
+    let result = checkUsers(req.body, usersInJSON);
     res.send(result);
 });
 
@@ -39,34 +41,30 @@ router.post('/captcha', jsonParser, (req, res) => {
 });
 
 router.post('/socks', [check('name').trim().not().isEmpty().isString().isAlpha().isLength({
-    min: 3
-})], (req, res) => {
+    min: 3,
+    max: 25
+})], textParser, (req, res) => {
 
-    getUsers();
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({
             errors: errors.array()
         });
     }
-    let result = checkUsers(req.body.name);
-
-    if (!result) {
-        
+    const postUsers = checkUsers(req.body.name, usersInJSON);
+    if (!postUsers) {
         res.status(409);
+        res.render('exists');
     } else {
+        usersInJSON = getUsers();
         let socks5string = userCreator(req.body.name);
-
         res.render('success', {
             data: {
                 name: req.body.name,
                 socks5: socks5string
             },
         });
-        res.status(200);
     }
-
-
 });
 
 

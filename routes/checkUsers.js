@@ -1,7 +1,5 @@
-const existingUsers = require('../data/users.json');
-let result;
-
-const checkUsers = function (requestedUser) {
+const checkUsers = function (requestedUser, existingUsers) {
+    let result = {};
     for (usr in existingUsers) {
         if (existingUsers[usr].toLowerCase() !== requestedUser.toLowerCase()) {
             result = true;
