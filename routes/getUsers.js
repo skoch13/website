@@ -1,6 +1,4 @@
 const exec = require('child_process').exec;
-const fs = require('fs');
-
 
 const getUsers = function () {
     let usersToJSON = {};
@@ -18,19 +16,8 @@ const getUsers = function () {
         }
 
         for (var i = 0; i < users.length; i++) {
-            usersToJSON['user' + i] = users[i];
+            usersToJSON[i] = users[i];
         }
-
-        //compling a JSON file before writing in file
-        //usersToJSON = JSON.stringify(usersToJSON);
-
-        //saving existing users to a text file
-/*         fs.writeFile('./data/users.json', usersToJSON, (err) => {
-            if (err) {
-                return console.log(err);
-
-            }
-        }) */
     }); 
 
     return usersToJSON;

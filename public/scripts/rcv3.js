@@ -3,16 +3,14 @@ const captchaResult = () => {
         action: 'homepage'
     }).then((token) => {
         const login = document.querySelector('#login').value;
-        const email = document.querySelector('#email').value;
         const captcha = token;
-        sendData(login, email, captcha);
+        sendData(login, captcha);
     });
 }
-const sendData = (login, email, captcha) => {
+const sendData = (login, captcha) => {
 
     const info = JSON.stringify({
         login: login,
-        email: email,
         captcha: captcha,
     });
     fetch('/captcha', {
@@ -29,7 +27,7 @@ const sendData = (login, email, captcha) => {
             console.log(data.score);
         }
         result = data.success;
-        console.log(`OK ${data.score}`);
+        console.log(`Похоже, что Вы - не робот: ${data.score}`);
     }).catch((e) => console.log(e));
     return result;
 }

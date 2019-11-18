@@ -1,6 +1,6 @@
 const checkUsers = function (requestedUser, existingUsers) {
     let result = {};
-    for (usr in existingUsers) {
+    for (let usr in existingUsers) {
         if (existingUsers[usr].toLowerCase() !== requestedUser.toLowerCase()) {
             result = true;
         } else {

@@ -7,14 +7,11 @@
 
 <section class="section-main">
     <div class="submit-form">
-        <h2 class="section-title">Заполните форму</h2>
         <form method="POST" action="socks" id="submitForm">
             <fieldset class="fld-form">
-                <legend>Login Details</legend>
-                <label for="login">Login:</label><input name="name" type="text" value="" id="login" class="submit-input"
-                    size="25" maxlength="25" placeholder="John Doe" required pattern="[A-Za-z]{3,25}" title="Имя пользователя должно содержать только буквы и цифры, от 6 до 25 символов"> <span class="submit-check"></span><br /><label
-                    for="email">Email:</label><input name="email" type="email" placeholder="example@website.com"
-                    id="email" class="submit-input" size="25" maxlength="25" disabled> <br /> <button type="submit"
+                <legend>Введите желаемое имя пользователя</legend>
+                <label for="login">Имя пользователя:</label><input name="name" type="text" value="" id="login" class="submit-input"
+                    size="25" maxlength="25" placeholder="John Doe" required pattern="[A-Za-z]{3,25}" title="Имя пользователя должно содержать только буквы и цифры, от 6 до 25 символов"> <span class="submit-check"></span><br /><button type="submit"
                     value="Submit" class="btn-submit" disabled>Отправить</button>
             </fieldset>
         </form>
