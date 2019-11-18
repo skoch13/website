@@ -47,7 +47,7 @@ router.post('/socks', [check('name').trim().not().isEmpty().isString().isAlpha()
     
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-         res.status(422).json({
+         return res.status(422).json({
             errors: errors.array()
         });
     }
