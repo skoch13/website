@@ -1,6 +1,9 @@
 # skoch13.cloud
 This is a repo for my personal website, which represents my sense of humor and could be handy with generating SOCKS5 proxy credentials.
 
+## 11/18/2019
+Fixed repeated user creation, not works properly. Remove unnecessary email field
+
 ## 11/04/2019
 Dropped using a file for existing users. Added 'user exists' page. Fixed conflicts.
 

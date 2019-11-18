@@ -44,19 +44,21 @@ router.post('/socks', [check('name').trim().not().isEmpty().isString().isAlpha()
     min: 3,
     max: 25
 })], textParser, (req, res) => {
-
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(422).json({
+         res.status(422).json({
             errors: errors.array()
         });
     }
+    
     const postUsers = checkUsers(req.body.name, usersInJSON);
     if (!postUsers) {
         res.status(409);
         res.render('exists');
     } else {
-        usersInJSON = getUsers();
+        let newLogin = Number(Object.keys(usersInJSON).sort((a,b) => a - b)[Object.keys(usersInJSON).length - 1].slice(-1));
+        usersInJSON[Number(newLogin + 1)] = req.body.name;
         let socks5string = userCreator(req.body.name);
         res.render('success', {
             data: {
