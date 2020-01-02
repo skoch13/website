@@ -43,6 +43,10 @@ a {
 	font-weight: 600;
 }
 
+strong {
+	font-weight: bold;
+}
+
 .icon {
 height: 19px;
 width: 19px;
@@ -93,7 +97,7 @@ a:focus {
 .article-image {
 	display: block;
 	height: auto;
-	max-width: 70vh;
+	max-width: 100%;
 
 }
 
@@ -104,6 +108,10 @@ a:focus {
 
 	main {
 		width: 75%;
+	}
+
+	footer {
+		margin-top: -50px;
 	}
 	
 }
@@ -172,6 +180,10 @@ footer {
 	color: #707070;
 }
 
+.fld-form {
+	padding: 20px;
+	border: 0.1px solid;
+}
 
 @media (max-width: 700px) {
 
@@ -186,12 +198,58 @@ footer {
 
 	.container-main {
 		width: 90%;
-		margin: 2em 2em 2em;
+		margin: auto;
+		justify-content: center;
 		
 	}
 
 	.article-image {
-		max-width: 50vh;
+		max-width: 100%;
+		padding-bottom: 50px;
+	}
+
+	footer {
+		margin-top: -50px;
+	}
+
+	.fld-form {
+		margin-bottom: 100px;
+	}
+}
+
+@media only screen and (orientation: landscape) and (max-width: 800px) {
+	 .container {
+		max-height: 35%;
+	} 
+
+	header {
+		padding-bottom: 1em;
+		padding-top: 0.5em;
+		font-size: 1em;
+		margin-bottom: 1em;
+		width: 100%;
+	}
+
+	h1 {
+		font-size: 1.2rem;
+	}
+	.section-title {
+		font-size: 1rem;
+	}
+	
+	.section-title-p {
+		text-align: justify;
+		font-size: 0.65rem;
+	}
+	footer {
+		margin-top: 0;
+		position: relative;
+		width: 100%;
+		padding-top: 0.5em;
+	}
+
+	.subtitle-footer {
+		font-size: 1em;
 	}
 }
 
@@ -210,7 +268,6 @@ legend {
 .submit-input {
 	margin: 1em 0 0 1em;
 	padding-left: 5px;
-	size: 500;
 	font-size: 0.9rem;
 	height: 23px;
 	border: 1px solid #707070;
@@ -225,10 +282,6 @@ legend {
 
 }
 
-.fld-form {
-	padding: 20px;
-	border: 0.1px solid;
-}
 
 .h1nf {
 	margin-bottom: 1em;
