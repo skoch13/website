@@ -113,6 +113,11 @@ a:focus {
 	footer {
 		margin-top: -50px;
 	}
+
+	.submit-check {
+		margin-top: 0.75em;
+		display: inline-block;
+	}
 	
 }
 
@@ -214,6 +219,14 @@ footer {
 
 	.fld-form {
 		margin-bottom: 100px;
+	}
+	.submit-check {
+		margin-top: 0.75em;
+		display: inline-block;
+	}
+
+	.article-image-succ {
+		padding: 0;
 	}
 }
 
