@@ -1,6 +1,9 @@
 # skoch13.cloud
 This is a repo for my personal website, which represents my sense of humor and could be handy with generating SOCKS5 proxy credentials.
 
+## 01/02/2020
+the site became mobile-friendly(at least for iPhone X 😀), updated footer
+
 ## 11/18/2019
 Fixed repeated user creation, not works properly. Remove unnecessary email field
 
