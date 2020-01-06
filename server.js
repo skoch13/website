@@ -12,7 +12,7 @@ app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/main');
 app.use(helmet());
 app.use(expressLayouts);
-app.use(express.static('public'));
+app.use(express.static('public', {maxAge: 21600000}));
 app.use(bodyParser.urlencoded({
     extended: false
 })); 
