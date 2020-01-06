@@ -1,8 +1,11 @@
 # skoch13.cloud
 This is a repo for my personal website, which represents my sense of humor and could be handy with generating SOCKS5 proxy credentials.
 
+## 01/06/2020
+The repo became public. Fixed caching.
+
 ## 01/02/2020
-the site became mobile-friendly(at least for iPhone X 😀), updated footer
+The site became mobile-friendly(at least for iPhone X 😀), updated footer
 
 ## 11/18/2019
 Fixed repeated user creation, not works properly. Remove unnecessary email field
@@ -14,10 +17,10 @@ Dropped using a file for existing users. Added 'user exists' page. Fixed conflic
 Server validation, reply codes, nginx limiter
 
 ## 11/02/2019
-added reCaptcha v3, varios fixes and refactorings, ready to deploy
+Added reCaptcha v3, varios fixes and refactorings, ready to deploy
 
 ## 10/31/2019
-added frontend form validator
+Added frontend form validator
 
 ## 10/22/2019
 Moved form checker to server. Woof woof bark bark

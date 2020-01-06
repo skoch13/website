@@ -1,6 +1,6 @@
 const request = require('request');
 
-const secketKey = ***REMOVED***;
+const secketKey = process.env.SECRET_KEY;
 
 const captchaChecker = (req, res) => {
     if (!req.body.captcha) {
