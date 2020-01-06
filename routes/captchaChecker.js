@@ -1,6 +1,6 @@
 const request = require('request');
 
-const secketKey = '6Lc2nsAUAAAAAIfbH0W05JIrtK4mLIhDYHT2dkhV';
+const secketKey = process.env.SECRET_KEY;
 
 const captchaChecker = (req, res) => {
     if (!req.body.captcha) {
