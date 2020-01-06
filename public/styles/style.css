@@ -179,10 +179,18 @@ footer {
 
 }
 
-.subtitle-footer {
+.subtitle-footer,
+.subtitle-footer a
+ {
 	text-align: right;
 	font-size: 1rem;
 	color: #707070;
+}
+
+.subtitle-footer a:hover,
+.subtitle-footer a:focus 
+{
+	color: #171717;
 }
 
 .fld-form {

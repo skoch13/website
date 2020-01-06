@@ -22,9 +22,10 @@ const sendData = (login, captcha) => {
         body: info
     }).then((res) => res.json()).then((data) => {
 
-        if (!data.success) {
+        if (!data.success || data.success === undefined) {
             alert('Вы - грязный робот');
             console.log(data.score);
+            return false;
         }
         result = data.success;
         console.log(`Похоже, что Вы - не робот: ${data.score}`);
