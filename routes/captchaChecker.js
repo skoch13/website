@@ -1,6 +1,6 @@
 const request = require('request');
 
-const secketKey = process.env.SECRET_KEY;
+const secretKey = process.env.SECRET_KEY;
 
 const captchaChecker = (req, res) => {
     if (!req.body.captcha) {
@@ -9,7 +9,7 @@ const captchaChecker = (req, res) => {
         });
     }
 
-    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secketKey}&response=${req.body.captcha}`;
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}`;
 
     request(verifyUrl, (err, response, body) => {
         if (err) {

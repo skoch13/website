@@ -15,12 +15,12 @@ const getUsers = function () {
             users.pop();
         }
 
-        for (var i = 0; i < users.length; i++) {
+        for (let i = 0; i < users.length; i++) {
             usersToJSON[i] = users[i];
         }
     }); 
 
     return usersToJSON;
-}
+};
 
 module.exports = getUsers;

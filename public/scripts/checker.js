@@ -1,12 +1,12 @@
     let userField = document.querySelector('#login');
     let textSpan = document.querySelector('.submit-check');
     let doneTypingInterval = 500;
-    let sumbitButton = document.querySelector('.btn-submit');
+    let submitButton = document.querySelector('.btn-submit');
     let typingTimer;
 
     let result;
     
-    //loading capthca results
+    //loading captcha results
     window.addEventListener('load', () => {
         captchaResult();
     });
@@ -19,7 +19,7 @@
         textSpan.classList.remove('submit-check-red');
         textSpan.classList.remove('submit-check-green');
         textSpan.textContent = '';
-        sumbitButton.disabled = true;
+        submitButton.disabled = true;
 
         if (userField.value) {
             if (!userField.checkValidity()) {
@@ -45,20 +45,20 @@
                     body: userField.value,
                 }
             )
-            .then(responce => responce.json())
+            .then(response => response.json())
             .catch(e => {
                 console.error(e);
             });
 
         if (exists && result) {
             textSpan.classList.add('submit-check-green');
-            textSpan.textContent = 'Имя свободно'
-            sumbitButton.disabled = false;
+            textSpan.textContent = 'Имя свободно';
+            submitButton.disabled = false;
         } else {
             textSpan.classList.add('submit-check-red');
             textSpan.classList.remove('submit-check-green');
             textSpan.textContent = 'Занято';
-            sumbitButton.disabled = true;
+            submitButton.disabled = true;
         }
 
-    }
+    };

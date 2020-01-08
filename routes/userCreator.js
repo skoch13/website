@@ -1,5 +1,5 @@
 const passGen = require('password-generator');
-const URL = 'tg://socks?server=skoch13.cloud&port=443&user='
+const URL = 'tg://socks?server=skoch13.cloud&port=443&user=';
 const exec = require('child_process').exec;
 
 const userCreator = (username) => {
@@ -9,10 +9,10 @@ const userCreator = (username) => {
             return `exec error: ${error}`;
         }
 
-    })
+    });
 
     return `${URL}${username}&pass=${password}`
 
-}
+};
 
 module.exports = userCreator;

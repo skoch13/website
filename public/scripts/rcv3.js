@@ -3,10 +3,9 @@ const captchaResult = () => {
         action: 'homepage'
     }).then((token) => {
         const login = document.querySelector('#login').value;
-        const captcha = token;
-        sendData(login, captcha);
+        sendData(login, token);
     });
-}
+};
 const sendData = (login, captcha) => {
 
     const info = JSON.stringify({
@@ -22,7 +21,7 @@ const sendData = (login, captcha) => {
         body: info
     }).then((res) => res.json()).then((data) => {
 
-        if (!data.success || data.success === undefined) {
+        if (!data.success) {
             alert('Вы - грязный робот');
             console.log(data.score);
             return false;
@@ -31,4 +30,4 @@ const sendData = (login, captcha) => {
         console.log(`Похоже, что Вы - не робот: ${data.score}`);
     }).catch((e) => console.log(e));
     return result;
-}
+};
