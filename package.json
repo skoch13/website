@@ -25,12 +25,15 @@
     "express-ejs-layouts": "^2.5.0",
     "express-validator": "^6.2.0",
     "helmet": "^3.21.2",
-    "password-generator": "^2.2.0",
+    "password-generator": "^2.3.2",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
+    "dot-prop": ">=5.1.1",
     "dotenv": "^8.2.0",
-    "nodemon": "^1.19.3"
+    "kind-of": ">=6.0.3",
+    "minimist": ">=1.2.3",
+    "nodemon": "^2.0.4"
   }
 }
